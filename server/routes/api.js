@@ -55,6 +55,7 @@ app.get('/users', (req, res) => {
             })
             .catch((err) => {
                 sendError(err, res);
+
             });
     });
 });
