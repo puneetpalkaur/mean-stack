@@ -4,6 +4,7 @@ const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 var cors = require('cors');
 
+var uri = 'mongodb://heroku_c7kvvncf:o8gcj3d2ivm88qd4cuc0jqu22u@ds125841.mlab.com:25841/heroku_c7kvvncf';
 //CORS
 var app = express();
 var allowCrossDomain = function(req, res, next) {
@@ -22,10 +23,10 @@ var allowCrossDomain = function(req, res, next) {
 
 // Connect
 const connection = (closure) => {
-return MongoClient.connect('mongodb://localhost:27017/mean', { useNewUrlParser: true },(err, client) => {
+return MongoClient.connect(uri, { useNewUrlParser: true },(err, client) => {
 if (err) return console.log(err);
 
-let db = client.db('mean');
+let db = client.db('heroku_c7kvvncf');
 closure(db);
 });
 };
