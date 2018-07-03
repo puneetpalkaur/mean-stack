@@ -2,16 +2,25 @@ import { Injectable } from '@angular/core';
 
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { map } from 'rxjs/operators';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class DataService {
 
-  result:any;
 
-  constructor(private _http: Http) { }
+
+
+  constructor(private http: HttpClient) {
+
+  }
 
   getUsers() {
-    return this._http.get("/api/users").pipe(map(result => this.result = result.json().data));
+
+   console.log("calling get users");
+
+   return this.http.get("http://localhost:3000/api/users");
   }
 
 }
